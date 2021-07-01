@@ -1,4 +1,4 @@
 class Frame():
-	def __init__(self, height, width, content):
-		self.resolution = {"height": height, "width": width}
+	def __init__(self, width, height, content):
+		self.resolution = {"width": width, "height": height}
 		self.content = content

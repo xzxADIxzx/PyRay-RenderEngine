@@ -1,7 +1,7 @@
 import math
 
 class Vector():
-	def __init__(self, x, y, z):
+	def __init__(self, x=0, y=0, z=0):
 		self.x = x
 		self.y = y
 		self.z = z
@@ -35,6 +35,10 @@ class Vector():
 	
 	def __abs__(self):
 		return Vector(abs(self.x), abs(self.y), abs(self.z))
+
+	@property
+	def zero(self):
+		return Vector(0, 0, 0)
 
 	@property
 	def magnitude(self):

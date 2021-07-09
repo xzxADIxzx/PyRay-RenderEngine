@@ -2,20 +2,52 @@ from PyRay import *
 from PIL import Image
 import time
 
-cam = Camera("Main Camera", Vector().zero, Vector().zero, 355, 200, 60, 2, 20)
+print("PyRay - RenderEngine")
+print("By xzxADIxzx")
+print("V1.0 Release")
+print()
+
 col = Color(255, 0, 0)
-mat = Material(col, .2, 1)
-spr = Sphere("Sphere", Vector(-5, 5, 100), mat, 70)
+mat = Material(col, .8, 1)
+spr = Sphere("Sphere", Vector(-5, 5, 80), mat, 70)
+
 col = Color(0, 150, 255)
-mat = Material(col, .2, 1)
-bsr = Sphere("Sphere", Vector(20, -15, 100), mat, 60)
+mat = Material(col, .8, 1)
+bsr = Sphere("Sphere", Vector(20, -15, 90), mat, 60)
+
 col = Color(100, 255, 100)
-mat = Material(col, .2, 1)
+mat = Material(col, .8, 1)
 bgs = Sphere("Sphere", Vector(0, 0, 100), mat, 80)
-scn = Scene(cam, Vector(0, 100, 0), [spr, bsr, bgs])
+
+col = Color(255, 0, 255)
+mat = Material(col, 1, 1)
+psp = Sphere("Sphere", Vector(0, 0, 200), mat, 100)
+
+col = Color(0, 200, 255)
+mat = Material(col, 1, 1)
+lbs = Sphere("Sphere", Vector(-130, -50, 40), mat, 20)
+
+col = Color(255, 50, 50)
+mat = Material(col, .8, 1)
+ars = Sphere("Sphere", Vector(-100, 50, 40), mat, 30)
+
+col = Color(50, 50, 255)
+mat = Material(col, 1, 1)
+als = Sphere("Sphere", Vector(120, 40, 40), mat, 35)
+
+col = Color(50, 240, 50)
+mat = Material(col, 1, 1)
+ags = Sphere("Sphere", Vector(110, -60, 20), mat, 15)
+
+cam = Camera("Main Camera", Vector().zero, Vector().zero, 355, 200, 60, 10)
+scn = Scene(cam, Vector(0, 1, 0).normalized, [spr, bsr, bgs, psp, lbs, ars, als, ags])
+# scn = Scene(cam, Vector(0, 1, 0).normalized, [bgs])
+
 rtx = time.time()
 rim = render(scn).content
-print("Render: " + str(time.time() - rtx))
+print("Render: " + str(round(time.time() - rtx, 2)) + " secs")
+print("Traced: " + str(get_total_rays()) + " rays")
+print("Checkd: " + str(get_total_intr()) + " intr")
 
 img = Image.new('RGB', (cam.width, cam.height))
 for x in range(cam.width):
@@ -23,15 +55,4 @@ for x in range(cam.width):
 		img.putpixel((x, y), (rim[x][y].r, rim[x][y].g, rim[x][y].b))
 img.save('render.png')
 img.show()
-
-# Bug#0001: Камера отзеркалена по вертикале.
-# Лучи должный пускаться слева -> направо
-# И сверху -> вниз, а не наоборот
-
-# Bug#0002: Отображает обЪекты в том порядке
-# К котором они находятся в спике.
-# Надо отсортировать список по растоянию от камеры
-
-# P.S. Возможно это не поможет, тогда надо будет
-# Записывать растояния которое прошел луч
-# И отрисовывать тот который прошёл наименьшее растояние
+# input() for console

@@ -1,3 +1,2 @@
-__pychache__/*
-classes/__pychache__/*
-render.png
+*.pyc
+*.png

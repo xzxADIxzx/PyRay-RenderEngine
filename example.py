@@ -32,19 +32,45 @@ mat = Material(col, .8, 1)
 ars = Sphere("Sphere", Vector(-100, 50, 40), mat, 30)
 
 col = Color(50, 50, 255)
-mat = Material(col, 1, 1)
+mat = Material(col, 1, .6)
 als = Sphere("Sphere", Vector(120, 40, 40), mat, 35)
 
 col = Color(50, 240, 50)
 mat = Material(col, 1, 1)
 ags = Sphere("Sphere", Vector(110, -60, 20), mat, 15)
 
-cam = Camera("Main Camera", Vector().zero, Vector().zero, 355, 200, 60, 10)
-scn = Scene(cam, Vector(0, 1, 0).normalized, [spr, bsr, bgs, psp, lbs, ars, als, ags])
+col = Color(150, 150, 150)
+mat = Material(col, 1, 1)
+cub = Cube("Cube", Vector(140, -15, 80), Vector(50, 50, 50), mat)
+
+
+# col = Color(255, 50, 50)
+# mat = Material(col, 1, .4)
+# rsp = Sphere("Sphere", Vector(-90, 0, 90), mat, 80)
+
+# col = Color(0, 150, 255)
+# mat = Material(col, 1, .4)
+# bsp = Sphere("Sphere", Vector(90, 0, 90), mat, 80)
+
+
+# col = Color(255, 50, 50)
+# mat = Material(col, 1, .4)
+# rcb = Cube("Cube", Vector(0, 0, -70), Vector(120, 120, 120), mat)
+
+# col = Color(0, 150, 255)
+# mat = Material(col, 1, .4)
+# bcb = Cube("Cube", Vector(0, 0, 70), Vector(150, 150, 150), mat)
+
+cam = Camera("Main Camera", Vector().zero, Vector().zero, 355, 200, 60, 5)
+scn = Scene(cam, Vector(0, 1, 0).normalized, [spr, bsr, bgs, psp, lbs, ars, als, ags, cub])
+
 # scn = Scene(cam, Vector(0, 1, 0).normalized, [bgs])
+# scn = Scene(cam, Vector(0, 1, 0).normalized, [rsp, bsp])
+# scn = Scene(cam, Vector(0, 1, 0).normalized, [rcb, bcb])
 
 rtx = time.time()
 rim = render(scn).content
+
 print("Render: " + str(round(time.time() - rtx, 2)) + " secs")
 print("Traced: " + str(get_total_rays()) + " rays")
 print("Checkd: " + str(get_total_intr()) + " intr")

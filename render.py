@@ -24,13 +24,20 @@ def trace(ray, objects, light, recursion, max_recursion, dis = None):
 
 	dis.sort(key = lambda x: x[1])
 	hit = dis[0] # The closest object the ray collided with
-	clr = hit[0].material.color * hit[0].material.transparency
+	clr = hit[0].material.color * hit[0].material.transparency * hit[0].material.reflectivity
 	pos = Vector(ray.origin.x, ray.origin.y, 1 * hit[1])
 
 	# Normal
-	nrm = pos - hit[0].position
-	nrm = light.dot(nrm.normalized) * -120 # Temp "-120" Because Bug#0001
-	clr += Color(nrm, nrm, nrm)
+	nrm = hit[0].get_normal(pos)
+	lig = light.dot(nrm) * -120 # Temp "-120" Because Bug#0001
+	clr += Color(lig, lig, lig)
+
+	# Reflectivity
+	if hit[0].material.reflectivity < 1 and not recursion == max_recursion:
+		r1 = ray.direction * -1
+		rr = nrm * 2 * r1.dot(nrm) - r1
+		refray = Ray(pos, rr)
+		clr += trace(refray, objects, light, recursion + 1, max_recursion) * (1 - hit[0].material.reflectivity)
 
 	# Transparency
 	if hit[0].material.transparency < 1 and not recursion == max_recursion:

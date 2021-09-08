@@ -30,6 +30,7 @@ def trace(ray, objects, light, recursion, max_recursion, dis = None):
 	# Normal
 	nrm = hit[0].get_normal(pos)
 	lig = light.dot(nrm) * -120 # Temp "-120" Because Bug#0001
+	# lig = (pos - light).normalized.dot(nrm) * -60 Dot Light
 	clr += Color(lig, lig, lig)
 
 	# Reflectivity
@@ -46,9 +47,9 @@ def trace(ray, objects, light, recursion, max_recursion, dis = None):
 		clr += trace(ray, objects, light, recursion + 1, max_recursion, dis) * (1 - hit[0].material.transparency)
 
 	# Shadows
-	# # pos = Vector(x - scene.camera.width/2, y - scene.camera.height/2, 1 * hit[1])
-	# # pos = Vector(x - scene.camera.width/2, y - scene.camera.height/2, 0) + can[x * y] * hit[1]
-	# ray = Ray(pos, Vector(0, 1, 0))
+	# pos = Vector(ray.origin.x, ray.origin.y, 1 * hit[1])
+	# pos = Vector(ray.origin.x, ray.origin.y, 0) + can[x * y] * hit[1]
+	# ray = Ray(pos, light)
 	# shd = hit[0].intersects(ray)
 	# if hit is not None:
 	# 	clr = Color(100, 100, 100)

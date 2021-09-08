@@ -7,41 +7,41 @@ print("By xzxADIxzx")
 print("V1.0 Release")
 print()
 
-col = Color(255, 0, 0)
-mat = Material(col, .8, 1)
-spr = Sphere("Sphere", Vector(-5, 5, 80), mat, 70)
+# col = Color(255, 0, 0)
+# mat = Material(col, .8, 1)
+# spr = Sphere("Sphere", Vector(-5, 5, 80), mat, 70)
 
-col = Color(0, 150, 255)
-mat = Material(col, .8, 1)
-bsr = Sphere("Sphere", Vector(20, -15, 90), mat, 60)
+# col = Color(0, 150, 255)
+# mat = Material(col, .8, 1)
+# bsr = Sphere("Sphere", Vector(20, -15, 90), mat, 60)
 
 col = Color(100, 255, 100)
 mat = Material(col, .8, 1)
 bgs = Sphere("Sphere", Vector(0, 0, 100), mat, 80)
 
-col = Color(255, 0, 255)
-mat = Material(col, 1, 1)
-psp = Sphere("Sphere", Vector(0, 0, 200), mat, 100)
+# col = Color(255, 0, 255)
+# mat = Material(col, 1, 1)
+# psp = Sphere("Sphere", Vector(0, 0, 200), mat, 100)
 
-col = Color(0, 200, 255)
-mat = Material(col, 1, 1)
-lbs = Sphere("Sphere", Vector(-130, -50, 40), mat, 20)
+# col = Color(0, 200, 255)
+# mat = Material(col, 1, 1)
+# lbs = Sphere("Sphere", Vector(-130, -50, 40), mat, 20)
 
-col = Color(255, 50, 50)
-mat = Material(col, .8, 1)
-ars = Sphere("Sphere", Vector(-100, 50, 40), mat, 30)
+# col = Color(255, 50, 50)
+# mat = Material(col, .8, 1)
+# ars = Sphere("Sphere", Vector(-100, 50, 40), mat, 30)
 
-col = Color(50, 50, 255)
-mat = Material(col, 1, .6)
-als = Sphere("Sphere", Vector(120, 40, 40), mat, 35)
+# col = Color(50, 50, 255)
+# mat = Material(col, 1, .6)
+# als = Sphere("Sphere", Vector(120, 40, 40), mat, 35)
 
-col = Color(50, 240, 50)
-mat = Material(col, 1, 1)
-ags = Sphere("Sphere", Vector(110, -60, 20), mat, 15)
+# col = Color(50, 240, 50)
+# mat = Material(col, 1, 1)
+# ags = Sphere("Sphere", Vector(110, -60, 20), mat, 15)
 
-col = Color(150, 150, 150)
-mat = Material(col, 1, 1)
-cub = Cube("Cube", Vector(140, -15, 80), Vector(50, 50, 50), mat)
+# col = Color(150, 150, 150)
+# mat = Material(col, 1, 1)
+# cub = Cube("Cube", Vector(140, -15, 80), Vector(50, 50, 50), mat)
 
 
 # col = Color(255, 50, 50)
@@ -61,10 +61,44 @@ cub = Cube("Cube", Vector(140, -15, 80), Vector(50, 50, 50), mat)
 # mat = Material(col, 1, .4)
 # bcb = Cube("Cube", Vector(0, 0, 70), Vector(150, 150, 150), mat)
 
-cam = Camera("Main Camera", Vector().zero, Vector().zero, 355, 200, 60, 5)
-scn = Scene(cam, Vector(0, 1, 0).normalized, [spr, bsr, bgs, psp, lbs, ars, als, ags, cub])
 
-# scn = Scene(cam, Vector(0, 1, 0).normalized, [bgs])
+# col = Color(255, 150, 0)
+# mat = Material(col, 1, 1)
+# lwl = Cube("Left Wall", Vector(-100, 0, 0)*5, Vector(100, 100, 100)*5, mat)
+
+# col = Color(230, 230, 230)
+# mat = Material(col, 1, 1)
+# fwl = Cube("Front Wall", Vector(0, 0, 100)*5, Vector(100, 100, 100)*5, mat)
+
+# col = Color(0, 150, 255)
+# mat = Material(col, 1, 1)
+# rwl = Cube("Right Wall", Vector(100, 0, 0)*5, Vector(100, 100, 100)*5, mat)
+
+# col = Color(230, 230, 230)
+# mat = Material(col, 1, 1)
+# rof = Cube("Roof", Vector(0, 100, 0)*5, Vector(100, 100, 100)*5, mat)
+
+# col = Color(230, 230, 230)
+# mat = Material(col, 1, 1)
+# flr = Cube("Floor", Vector(0, -100, 0)*5, Vector(100, 100, 100)*5, mat)
+
+# col = Color(255, 255, 255)
+# mat = Material(col, 1, .95)
+# spr = Sphere("Mat Sphere", Vector(-25, 30, 25)*5, mat, 20*5)
+
+# col = Color(50, 255, 50)
+# mat = Material(col, 1, 1)
+# cub = Cube("Cube", Vector(30, 44, 10)*5, Vector(10, 12, 10)*5, mat)
+
+# col = Color(255, 255, 255)
+# mat = Material(col, 1, 0)
+# met = Sphere("Metalic Sphere", Vector(30, 33, 10)*5, mat, 5*5)
+
+cam = Camera("Main Camera", Vector().zero, Vector().zero, 355, 200, 60, 5)
+# scn = Scene(cam, Vector(0, 1, 0).normalized, [lwl, fwl, rwl, rof, flr, spr, cub, met])
+
+# scn = Scene(cam, Vector(0, 1, 0).normalized, [spr, bsr, bgs, psp, lbs, ars, als, ags, cub])
+scn = Scene(cam, Vector(0, 1, 0).normalized, [bgs])
 # scn = Scene(cam, Vector(0, 1, 0).normalized, [rsp, bsp])
 # scn = Scene(cam, Vector(0, 1, 0).normalized, [rcb, bcb])
 
